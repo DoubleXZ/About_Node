@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Node.js作为服务器时，可以通过该种方式引入-->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="application/javascript">
+        const socket = io('http://localhost:3000');
+        socket.on('message', (message) => {
+            console.log('data from server ' + message.toString());
+        });
+
+        socket.on('disconnect', () => {
+            console.log('disconnect')
+        });
+        //监听serverEvent自定义事件
+        socket.on('serverEvent', (data)=>{
+           console.log('serverEvent: ' + data);
+            //客户端自定义事件，向对端发送一个对象
+            socket.emit('clientEvent', {address:'QindDao', age:20});
+        });
+        //客户端自定义广播事件：broadCastEventClient
+        socket.emit('broadCastEventClient', 'take care');
+        socket.on('broadCastEventClient', (data) => {
+            console.log(data);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

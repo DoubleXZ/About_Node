@@ -1,0 +1,31 @@
+/*
+    Node操纵文件系统是通过一个重要的原生模块来实现的: fs
+
+    对于fs中的绝大多数api来说，Node都提供了相同功能的两个版本：同步版本和异步版本。
+    对于同步版本和异步版本来说，其在方法命名上存在一个规则：
+    xxxx（异步）
+    xxxxSync(同步)
+
+    PS：尽最大可能使用异步版本
+ */
+
+const fs = require('fs');
+
+//同步方式读取文件，写法必须在try块里
+try{
+    const data = fs.readFileSync('test1.txt','utf8');
+    console.log(data);
+}catch (e) {
+    console.log(e);
+}
+//异步方式读取文件，常用方式
+fs.readFile('test.txt', 'utf8', function (error, data) {
+    if(error){
+        console.log('error occured');
+        console.log(error);
+    }else {
+        console.log(data);
+    }
+});
+
+console.log('hello Node.js');
