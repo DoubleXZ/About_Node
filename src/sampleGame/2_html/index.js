@@ -19,14 +19,14 @@ http.createServer((request, response) => {
     const urlPath = url.parse(request.url);
 
     //http://localhost:3000/favicon.ico的情况
-    if (urlPath.pathname == '/favicon.ico') {
+    if (urlPath.pathname === '/favicon.ico') {
         response.writeHead(200);
         response.end();
         return;
     }
 
     //http://localhost:3000/game?action=rock的情况
-    if (urlPath.pathname == '/game') {
+    if (urlPath.pathname === '/game') {
         const query = queryString.parse(urlPath.query);
         const playerAction = query.action;
         /*
@@ -35,13 +35,13 @@ http.createServer((request, response) => {
             2、若玩家连续赢三次，则电脑端认为玩家作弊
          */
         //电脑端作弊
-        if (playerWon > 3 || sameCount == 6) {
+        if (playerWon > 3 || sameCount === 6) {
             response.writeHead(500);
             response.end('不和你玩儿了');
             return;
         }
         //用户端作弊
-        if (playerLastAction && playerAction == playerLastAction) {
+        if (playerLastAction && playerLastAction === playerAction ) {
             sameCount++;
         } else {
             sameCount = 0;
@@ -59,9 +59,9 @@ http.createServer((request, response) => {
         const gameResult = game(playerAction);
 
         response.writeHead(200);
-        if (gameResult == 0) {
+        if (gameResult === 0) {
             response.end('平局');
-        }else if (gameResult == -1) {
+        }else if (gameResult === -1) {
             response.end('你输了');
         }else {
             response.end('你赢了');

@@ -1,6 +1,6 @@
 module.exports = function (playerAction) {
 
-    if (['rock','scissor','paper'].indexOf(playerAction) === -1) {
+    if (['rock','scissor','paper'].indexOf(playerAction) == -1) {
         throw new Error('非法输入！请输入rock或scissor或paper');
     }
     console.log('用户出了' + playerAction);
@@ -24,9 +24,9 @@ module.exports = function (playerAction) {
         console.log('平局');
         return 0;
     } else if(
-        (playerAction === 'rock' && computerAction === 'paper') ||
-        (playerAction === 'scissor' && computerAction === 'rock') ||
-        (playerAction === 'paper' && computerAction === 'scissor')
+        (playerAction == 'rock' && computerAction == 'paper') ||
+        (playerAction == 'scissor' && computerAction == 'rock') ||
+        (playerAction == 'paper' && computerAction == 'scissor')
     ) {
         console.log('哈哈哈，你输了！');
         return -1;
