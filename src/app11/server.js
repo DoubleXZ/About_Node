@@ -13,7 +13,7 @@ app.use(async (ctx) => {
             code: 0,
             description: 'success'
         }, data: {
-            username: 'zhangsan',
+            username: '张三',
             address: 'taiyuan',
             age: 20
         }
