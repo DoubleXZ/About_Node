@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "koa2Server": "node src/app10/scripts/server"
+    "koa2Server": "node src/app10/scripts/server.js"
   },
   "keywords": [],
   "author": "",
