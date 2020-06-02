@@ -1,3 +1,7 @@
 {
-  "login": "/users/user/login"
+  "login": "/api/users/user/login",
+  "logout": "/api/users/user/logout",
+  "order": "/api/orders/order/",
+  "produce": "/api/products/search",
+  "produce": "/api/products/buy"
 }

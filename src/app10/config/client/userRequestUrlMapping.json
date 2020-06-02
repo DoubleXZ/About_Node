@@ -1,3 +1,4 @@
 {
-  "login": "/users/user/login"
+  "login": "/users/user/login",
+  "logout": "/users/user/logout"
 }

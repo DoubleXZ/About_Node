@@ -17,8 +17,7 @@ const app = new Koa();
 //若有其他路由，则继续引入
 const userRouter = require('../router/userRouter');
 //const orderRouter = ...
-//const productRouter = ...
-
+const productRouter = require('../router/productRouter');
 //若请求超过2K，则进行压缩
 app.use(compress({
     threshold: 2048
@@ -29,7 +28,8 @@ app.use(bodyParser());
 app.use(koaStatic(path.join(__dirname, '../dist')));
 //将所有router进行统一管理
 const unifiedRouters = combineRouters(
-    userRouter
+    userRouter,
+    productRouter
 )();
 
 app.use(unifiedRouters);
